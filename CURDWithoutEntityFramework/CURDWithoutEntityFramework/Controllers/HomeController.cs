@@ -62,6 +62,7 @@ namespace CURDWithoutEntityFramework.Controllers
             }
             return View(employee);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Employee employee)
@@ -69,7 +70,7 @@ namespace CURDWithoutEntityFramework.Controllers
             if (ModelState.IsValid)
             {
                 db.UpdateEmployee(employee);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index");
             }
             return View(employee);
         }

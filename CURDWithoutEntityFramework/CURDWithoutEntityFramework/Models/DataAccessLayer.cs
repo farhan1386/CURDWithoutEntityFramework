@@ -19,7 +19,7 @@ namespace CURDWithoutEntityFramework.Models
             using (SqlConnection con = new SqlConnection(CS))
 
             {
-                SqlCommand cmd = new SqlCommand("spGetEmployees", con);
+                var cmd = new SqlCommand("spGetEmployees", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -45,23 +45,31 @@ namespace CURDWithoutEntityFramework.Models
         //Create Operation 
         public bool AddNewEmployee(Employee employee)
         {
-            using (SqlConnection con = new SqlConnection(CS))
+            try
             {
-                var cmd = new SqlCommand("spInsertNew", con);
-                con.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", employee.LastName);
-                cmd.Parameters.AddWithValue("@Gender", employee.Gender);
-                cmd.Parameters.AddWithValue("@Age", employee.Age);
-                cmd.Parameters.AddWithValue("@Position", employee.Position);
-                cmd.Parameters.AddWithValue("@Office", employee.Office);
-                cmd.Parameters.AddWithValue("@Salary", employee.Salary);
-                int i = cmd.ExecuteNonQuery();
-                if (i >= 1)
-                    return true;
-                else
-                    return false;
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    var cmd = new SqlCommand("spInserNewEmployee", con);
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", employee.LastName);
+                    cmd.Parameters.AddWithValue("@Gender", employee.Gender);
+                    cmd.Parameters.AddWithValue("@Age", employee.Age);
+                    cmd.Parameters.AddWithValue("@Position", employee.Position);
+                    cmd.Parameters.AddWithValue("@Office", employee.Office);
+                    cmd.Parameters.AddWithValue("@Salary", employee.Salary);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i >= 1)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
         }
