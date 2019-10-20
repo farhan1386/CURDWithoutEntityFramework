@@ -70,10 +70,11 @@ namespace CURDWithoutEntityFramework.Controllers
             if (ModelState.IsValid)
             {
                 db.UpdateEmployee(employee);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(employee);
         }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
