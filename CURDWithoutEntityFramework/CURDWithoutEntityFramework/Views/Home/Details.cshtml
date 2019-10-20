@@ -1,0 +1,38 @@
+﻿@model CURDWithoutEntityFramework.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Employee Details</h3>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-md-3">@Html.DisplayNameFor(m => m.FirstName)</dt>
+            <dd class="col-md-3">@Html.DisplayFor(m => m.FirstName)</dd>
+            <dt class="col-md-3">@Html.DisplayNameFor(m => m.LastName)</dt>
+            <dd class="col-md-3">@Html.DisplayFor(m => m.LastName)</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-3">@Html.DisplayNameFor(m => m.Gender)</dt>
+            <dd class="col-md-3">@Html.DisplayFor(m => m.Gender)</dd>
+            <dt class="col-md-3">@Html.DisplayNameFor(m => m.Age)</dt>
+            <dd class="col-md-3">@Html.DisplayFor(m => m.Age)</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-md-2">@Html.DisplayNameFor(m => m.Position)</dt>
+            <dd class="col-md-2">@Html.DisplayFor(m => m.Position)</dd>
+            <dt class="col-md-2">@Html.DisplayNameFor(m => m.Office)</dt>
+            <dd class="col-md-2">@Html.DisplayFor(m => m.Office)</dd>
+            <dt class="col-md-2">@Html.DisplayNameFor(m => m.Salary)</dt>
+            <dd class="col-md-2">@Html.DisplayFor(m => m.Salary)</dd>
+        </dl>
+        <div>
+            @Html.ActionLink("Back to list", "Index", "Home", new { @class = "btn btn-primary rounded-0" })
+            @Html.ActionLink("Edit", "Edit", "Home", new { id = Model.Id}, new { @class = "btn btn-info rounded-0" })
+        </div>
+    </div>
+</div>
+
