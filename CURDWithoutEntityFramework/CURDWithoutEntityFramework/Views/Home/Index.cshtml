@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CURDWithoutEntityFramework.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="text-center text-uppercase">List of Employees</h3>
+
+<div style="margin-bottom:10px;">
+    @Html.ActionLink("Create New", "Create", "Home", "", new { @class = "btn btn-primary rounded-0" })
+</div>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.FirstName)</th>
+            <th>@Html.DisplayNameFor(m => m.LastName)</th>
+            <th>@Html.DisplayNameFor(m => m.Gender)</th>
+            <th>@Html.DisplayNameFor(m => m.Age)</th>
+            <th>@Html.DisplayNameFor(m => m.Position)</th>
+            <th>@Html.DisplayNameFor(m => m.Office)</th>
+            <th>@Html.DisplayNameFor(m => m.Salary)</th>
+            <th>Action(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Age</td>
+                <td>@emp.Position</td>
+                <td>@emp.Office</td>
+                <td>@emp.Salary</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Home", new { id = emp.Id }, new { @class = "btn btn-primary rounded-0" })
+                    @Html.ActionLink("Edit", "Edit", "Home", new { id = emp.Id }, new { @class = "btn btn-info rounded-0" })
+                    @Html.ActionLink("Delete", "Delete", "Home", new { id = emp.Id }, new { @class = "btn btn-danger rounded-0" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
